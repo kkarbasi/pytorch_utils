@@ -13,7 +13,7 @@ class CSVDataset(Dataset):
             feature_path='/path/to/file/containing/features/as/columns.csv',
             annotation_file='/path/to/file/containing/labels/as/columns.csv',
             feature_cols=['feature 1', 'feature 2'],
-            label_col=['label'],
+            label_cols=['label'],
         )
 
         then:
@@ -26,11 +26,11 @@ class CSVDataset(Dataset):
                  feature_path,
                  annotation_file,
                  feature_cols,
-                 label_col,
+                 label_cols,
                  transform=None,
                  target_transform=None):
-        self.X = pd.read_csv(prs_path)[prs_cols]
-        self.y = pd.read_csv(annotation_file)[outcome_col]
+        self.X = pd.read_csv(feature_path)[feature_cols]
+        self.y = pd.read_csv(annotation_file)[label_cols]
         self.transform = transform
         self.target_transform = target_transform
         
